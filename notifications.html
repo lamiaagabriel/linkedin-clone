@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en" className="text-sm md:text-base">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications | LinkedIn</title>
+
+    <!--Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="./dist/styles/global.css" />
+  </head>
+
+  <body class="min-h-screen flex flex-col relative">
+    <!-- Header + Navigation -->
+    <header class="border-b bg-card">
+      <div
+        class="container flex justify-between items-center gap-8 overflow-auto"
+      >
+        <!-- LinkedIn Logo + Search Input -->
+        <div class="flex justify-between items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            data-supported-dps="24x24"
+            fill="rgb(59 130 246)"
+            class="text-blue-500"
+            width="40"
+            height="40"
+            focusable="false"
+          >
+            <path
+              d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+            ></path>
+          </svg>
+
+          <input type="search" class="w-48 lg:w-64" placeholder="Search..." />
+        </div>
+
+        <div class="flex justify-between items-center gap-8">
+          <nav
+            class="flex justify-between items-center gap-4 whitespace-nowrap [&>a]:py-2 text-muted-foreground"
+          >
+            <a
+              href="index.html"
+              class="border-b-2 border-transparent flex flex-col justify-center items-center gap-1"
+            >
+              <i icon-name="home" size="20"></i>
+              <span class="hidden sm:block text-[10px]">Home</span>
+            </a>
+            <a
+              href="my-network.html"
+              class="border-b-2 border-transparent flex flex-col justify-center items-center gap-1"
+            >
+              <i icon-name="users-2" size="20"></i>
+              <span class="hidden sm:block text-[10px]">My Network</span>
+            </a>
+            <a
+              href="jobs.html"
+              class="border-b-2 border-transparent flex flex-col justify-center items-center gap-1"
+            >
+              <i icon-name="briefcase" size="20"></i>
+              <span class="hidden sm:block text-[10px]">Jobs</span>
+            </a>
+
+            <a
+              href="messaging.html"
+              class="border-b-2 border-transparent flex flex-col justify-center items-center gap-1"
+            >
+              <i icon-name="message-circle" size="20"></i>
+              <span class="hidden sm:block text-[10px]">Messaging</span>
+            </a>
+
+            <a
+              href="notifications.html"
+              class="border-b-2 border-foreground text-foreground flex flex-col justify-center items-center gap-1"
+            >
+              <i icon-name="bell" size="20"></i>
+              <span class="hidden sm:block text-[10px]">Notifications</span>
+            </a>
+          </nav>
+
+          <!-- Avatar -->
+          <div class="flex-shrink-0 group block">
+            <div class="flex items-center">
+              <div>
+                <span class="inline-block relative">
+                  <img
+                    class="inline-block h-9 w-9 rounded-full"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                  <span
+                    class="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-green-400"
+                  ></span>
+                </span>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium">Tom Cook</p>
+                <p
+                  class="text-xs font-medium text-muted-foreground group-hover:text-muted-foreground"
+                >
+                  View profile
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode Toggle Button -->
+          <button onclick="setMode()" class="flex items-center justify-center">
+            <span
+              class="w-10 h-5 bg-gradient-to-r from-blue-500 to-green-400 rounded-[20px] relative cursor-pointer"
+            >
+              <span
+                class="w-4 h-4 rounded-[50%] bg-white dark:bg-background dark:bg-[#1E202A] absolute right-[2.5px] dark:left-[2.5px] top-[50%] translate-y-[-50%] transition-all"
+              ></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="grow py-4">
+      <div
+        class="container grid xl:grid-cols-[0.8fr,1fr,0.8fr] gap-10 xl:gap-4"
+      >
+        <!-- Left Column -->
+        <div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
+            <div>
+              <div class="card rounded-t-xl overflow-hidden">
+                <div>
+                  <img
+                    class="h-32 w-full object-cover lg:h-48"
+                    src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt=""
+                  />
+                </div>
+                <div class="max-w-5xl mx-auto px-4">
+                  <div
+                    class="-mt-12 sm:-mt-16 flex items-end justify-between gap-4"
+                  >
+                    <div class="flex">
+                      <img
+                        class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 bg-card self-center text-sm flex border p-2 md:px-4 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="edit" size="20"></i>
+                        <span class="hidden md:block">Edit</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="my-6">
+                    <h1 class="font-bold truncate">Tom Cook</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sticky top-4">
+              <div class="card">
+                <h3 class="card-title">Recent Messages</h3>
+
+                <div class="card-content space-y-4">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-full flex justify-between items-center gap-2">
+                      <div class="min-w-0 flex-1">
+                        <p class="text-sm font-medium">
+                          <a href="#" class="hover:underline"
+                            >Leslie Alexander</a
+                          >
+                        </p>
+
+                        <p
+                          class="text-muted-foreground text-sm inline-flex gap-2"
+                        >
+                          <i icon-name="mail" size="20"></i>
+                          lesliealexander@gmail.com
+                        </p>
+                      </div>
+
+                      <i
+                        icon-name="chevron-right"
+                        class="text-muted-foreground"
+                        size="20"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-full flex justify-between items-center gap-2">
+                      <div class="min-w-0 flex-1">
+                        <p class="text-sm font-medium">
+                          <a href="#" class="hover:underline">Michael Foster</a>
+                        </p>
+
+                        <p
+                          class="text-muted-foreground text-sm inline-flex gap-2"
+                        >
+                          <i icon-name="mail" size="20"></i>
+                          michaelfoster@gmail.com
+                        </p>
+                      </div>
+
+                      <i
+                        icon-name="chevron-right"
+                        class="text-muted-foreground"
+                        size="20"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="w-full flex justify-between items-center gap-2">
+                      <div class="min-w-0 flex-1">
+                        <p class="text-sm font-medium">
+                          <a href="#" class="hover:underline">Lindsay Walton</a>
+                        </p>
+
+                        <p
+                          class="text-muted-foreground text-sm inline-flex gap-2"
+                        >
+                          <i icon-name="mail" size="20"></i>
+                          lindsaywalton@gmail.com
+                        </p>
+                      </div>
+
+                      <i
+                        icon-name="chevron-right"
+                        class="text-muted-foreground"
+                        size="20"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="w-full flex justify-between items-center gap-2">
+                      <div class="min-w-0 flex-1">
+                        <p class="text-sm font-medium">
+                          <a href="#" class="hover:underline">Leslie Abbott</a>
+                        </p>
+
+                        <p
+                          class="text-muted-foreground text-sm inline-flex gap-2"
+                        >
+                          <i icon-name="mail" size="20"></i>
+                          leslieabbott@gmail.com
+                        </p>
+                      </div>
+
+                      <i
+                        icon-name="chevron-right"
+                        class="text-muted-foreground"
+                        size="20"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="w-full flex justify-between items-center gap-2">
+                      <div class="min-w-0 flex-1">
+                        <p class="text-sm font-medium">
+                          <a href="#" class="hover:underline"
+                            >Fabricio Andrews</a
+                          >
+                        </p>
+
+                        <p
+                          class="text-muted-foreground text-sm inline-flex gap-2"
+                        >
+                          <i icon-name="mail" size="20"></i>
+                          fabricioandrews@gmail.com
+                        </p>
+                      </div>
+
+                      <i
+                        icon-name="chevron-right"
+                        class="text-muted-foreground"
+                        size="20"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Column -->
+        <div class="order-3 xl:order-2 space-y-10">
+          <!-- Start a post -->
+          <div class="card">
+            <div class="card-content space-y-4">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <img
+                    class="inline-block h-10 w-10 rounded-full"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </div>
+
+                <textarea
+                  class="peer min-h-[5rem]"
+                  placeholder="Start a post"
+                ></textarea>
+                <div></div>
+              </div>
+              <div class="flex justify-between items-center gap-4">
+                <div class="flex justify-between items-center gap-2">
+                  <div
+                    class="flex justify-center items-center gap-2 px-4 hover:bg-background whitespace-nowrap py-4 rounded-md transition-colors cursor-pointer"
+                  >
+                    <i icon-name="image" size="20" class="text-blue-500"></i>
+                    <span class="hidden sm:block">Photo</span>
+                  </div>
+                  <div
+                    class="flex justify-center items-center gap-2 px-4 hover:bg-background whitespace-nowrap py-4 rounded-md transition-colors cursor-pointer"
+                  >
+                    <i icon-name="youtube" size="20" class="text-green-500"></i>
+                    <span class="hidden sm:block">Video</span>
+                  </div>
+                  <div
+                    class="flex justify-center items-center gap-2 px-4 hover:bg-background whitespace-nowrap py-4 rounded-md transition-colors cursor-pointer"
+                  >
+                    <i
+                      icon-name="calendar-days"
+                      size="20"
+                      class="text-orange-500"
+                    ></i>
+                    <span class="hidden sm:block">Event</span>
+                  </div>
+                  <div
+                    class="flex justify-center items-center gap-2 px-4 hover:bg-background whitespace-nowrap py-4 rounded-md transition-colors cursor-pointer"
+                  >
+                    <i
+                      icon-name="calendar-days"
+                      size="20"
+                      class="text-red-500"
+                    ></i>
+                    <span class="hidden sm:block">Write Article</span>
+                  </div>
+                </div>
+
+                <button class="button-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Chelsea Hagon</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        <a href="#" class="hover:underline"
+                          >December 9 at 11:43 AM</a
+                        >
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 md:px-2 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                        <span class="hidden md:block">Follow</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officiis, odio doloribus. Temporibus illum, iure possimus,
+                      natus quaerat, alias accusantium laudantium perspiciatis
+                      praesentium eos sapiente nihil maiores. Fugit ullam earum
+                      blanditiis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+
+        <div class="order-2 xl:order-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
+            <div>
+              <div class="card">
+                <div class="card-content">
+                  <section aria-labelledby="timeline-title">
+                    <div>
+                      <h2
+                        id="timeline-title"
+                        class="text-lg font-medium text-foreground"
+                      >
+                        Timeline
+                      </h2>
+
+                      <!-- Activity Feed -->
+                      <div class="mt-6 flow-root">
+                        <ul role="list" class="-mb-8">
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-600"
+                                aria-hidden="true"
+                              ></span>
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span
+                                    class="h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-card"
+                                  >
+                                    <svg
+                                      class="w-5 h-5 text-white"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div
+                                  class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
+                                >
+                                  <div>
+                                    <p class="text-sm text-gray-500">
+                                      Applied to
+                                      <a
+                                        href="#"
+                                        class="font-medium text-foreground"
+                                        >Front End Developer</a
+                                      >
+                                    </p>
+                                  </div>
+                                  <div
+                                    class="text-right text-sm whitespace-nowrap text-gray-500"
+                                  >
+                                    <time datetime="2020-09-20">Sep 20</time>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-600"
+                                aria-hidden="true"
+                              ></span>
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span
+                                    class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-card"
+                                  >
+                                    <svg
+                                      class="w-5 h-5 text-white"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div
+                                  class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
+                                >
+                                  <div>
+                                    <p class="text-sm text-gray-500">
+                                      Advanced to phone screening by
+                                      <a
+                                        href="#"
+                                        class="font-medium text-foreground"
+                                        >Bethany Blake</a
+                                      >
+                                    </p>
+                                  </div>
+                                  <div
+                                    class="text-right text-sm whitespace-nowrap text-gray-500"
+                                  >
+                                    <time datetime="2020-09-22">Sep 22</time>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-600"
+                                aria-hidden="true"
+                              ></span>
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span
+                                    class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-card"
+                                  >
+                                    <svg
+                                      class="w-5 h-5 text-white"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div
+                                  class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
+                                >
+                                  <div>
+                                    <p class="text-sm text-gray-500">
+                                      Completed phone screening with
+                                      <a
+                                        href="#"
+                                        class="font-medium text-foreground"
+                                        >Martha Gardner</a
+                                      >
+                                    </p>
+                                  </div>
+                                  <div
+                                    class="text-right text-sm whitespace-nowrap text-gray-500"
+                                  >
+                                    <time datetime="2020-09-28">Sep 28</time>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-600"
+                                aria-hidden="true"
+                              ></span>
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span
+                                    class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-card"
+                                  >
+                                    <svg
+                                      class="w-5 h-5 text-white"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div
+                                  class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
+                                >
+                                  <div>
+                                    <p class="text-sm text-gray-500">
+                                      Advanced to interview by
+                                      <a
+                                        href="#"
+                                        class="font-medium text-foreground"
+                                        >Bethany Blake</a
+                                      >
+                                    </p>
+                                  </div>
+                                  <div
+                                    class="text-right text-sm whitespace-nowrap text-gray-500"
+                                  >
+                                    <time datetime="2020-09-30">Sep 30</time>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div class="relative pb-8">
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span
+                                    class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-card"
+                                  >
+                                    <svg
+                                      class="w-5 h-5 text-white"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div
+                                  class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"
+                                >
+                                  <div>
+                                    <p class="text-sm text-gray-500">
+                                      Completed interview with
+                                      <a
+                                        href="#"
+                                        class="font-medium text-foreground"
+                                        >Katherine Snyder</a
+                                      >
+                                    </p>
+                                  </div>
+                                  <div
+                                    class="text-right text-sm whitespace-nowrap text-gray-500"
+                                  >
+                                    <time datetime="2020-10-04">Oct 4</time>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="mt-6 flex flex-col justify-stretch">
+                        <button type="button" class="button-primary">
+                          Advance to offer
+                        </button>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="sticky top-4">
+              <div class="card">
+                <h3 class="card-title">Add to your feed</h3>
+
+                <div class="card-content space-y-4">
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Leslie Alexander</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Co-Founder / CEO
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Michael Foster</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Co-Founder / CTO
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Leslie Abbott</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Front-end Developer
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Leslie Abbott</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Co-Founder / CEO
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Fabricio Andrews</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Senior Art Director
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Leslie Alexander</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Co-Founder / CEO
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex space-x-3">
+                    <div class="flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium">
+                        <a href="#" class="hover:underline">Michael Foster</a>
+                      </p>
+                      <p class="text-sm text-muted-foreground">
+                        Co-Founder / CTO
+                      </p>
+                    </div>
+
+                    <div
+                      class="flex-shrink-0 self-center text-sm flex border p-1 rounded-full"
+                    >
+                      <div
+                        class="relative z-30 inline-flex text-left items-center gap-2"
+                      >
+                        <i icon-name="plus" size="20"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lucide Icons -->
+    <script src="./scripts/lucide.js"></script>
+
+    <!-- Javascript Scripts -->
+    <script src="./scripts/toggle-mode.js"></script>
+  </body>
+</html>
